@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/popularMoviesScreenFragment">
+
+    <fragment
+        android:id="@+id/popularMoviesScreenFragment"
+        android:name="com.appgain.movietask.ui.fragments.PopularMoviesScreenFragment"
+        android:label="Popular Movies"
+        tools:layout="@layout/fragment_popular_movies_screen">
+        <action
+            android:id="@+id/action_popular_screen_to_details_screen"
+            app:destination="@id/movieDetailsScreenFragment"
+            app:popUpTo="@id/popularMoviesScreenFragment">
+            <argument
+                android:name="movie_id"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailsScreenFragment"
+        android:name="com.appgain.movietask.ui.fragments.MovieDetailsScreenFragment"
+        android:label="Movie Details"
+        tools:layout="@layout/fragment_movie_details_screen">
+        <argument
+            android:name="movie_id"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="www.example.com/movie/{movie_id}"/>
+        <deepLink
+            android:id="@+id/deepLink3"
+            app:uri="movietask://movie_details/{movie_id}"/>
+    </fragment>
+
+</navigation>
